@@ -1,0 +1,29 @@
+{
+    "name": "appLog",
+    "version": "0.0.1",
+    "description": "dlog nodejs in-app logger",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dlog/appLog.git"
+    },
+    "dependencies": {
+        "zmq": "~2.4.0"
+    },
+    "devDependencies": {
+        "mocha": "~1.9.0",
+        "chai": "~1.5.0",
+    },
+    "keywords": [
+        "logger",
+        "dlog",
+        "stream",
+        "distributed"],
+    "author": "Halid Rian",
+    "license": "BSD",
+    "readmeFilename": "README.md",
+    "gitHead": "fb68ba39a04eacbcb040b2b7f9c83eab3ff1f50e"
+}
