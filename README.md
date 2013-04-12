@@ -1,4 +1,4 @@
-appLog
+dLog appLog
 ======
 
-stream your log from your node.js app to a dlog drone 
+stream logs from your node.js app to a dlog drone 
