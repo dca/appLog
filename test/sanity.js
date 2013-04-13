@@ -1,13 +1,14 @@
+var Log = require(__dirname + '/../');
+
 var chai = require("chai"),
     expect = chai.expect;
 
+var Stream = require('stream'),
+    stream = new Stream;
 
-var Log = require(__dirname + '/../');
 var log = new Log('info', stream)
-var stream = '';
 
-// place holder for the real test coming in the future
-describe('Log', function() {
+describe('Logger instance sanity check', function() {
     describe('log instance has a function log', function() {
         it('should return function when typeof is called on the Log', function() {
             expect(Log).to.be.a('function');
@@ -23,7 +24,6 @@ describe('Log', function() {
             expect(Log.NOTICE).to.equal(5);
             expect(Log.INFO).to.equal(6);
             expect(Log.DEBUG).to.equal(7);
-
         })
     })
 
