@@ -16,9 +16,12 @@ if (cluster.isMaster) {
 
     var log = new Log('info', stream);
     var stream = log.createStream(12345);
-
-    setInterval(function() {
+    var cp = 0;
+    var iv = setInterval(function() {
         log.info('hello');
+        cp++
+        if (cp==5)
+            clearInterval(iv);
     }, 1000)
 
 
