@@ -1,0 +1,50 @@
+doctype 5
+html
+  head
+    title= title + " - Meepshop Logger"
+
+    //- Load Style
+    link(rel='stylesheet', href='build/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
+    link(rel='stylesheet', href='build/stylesheets/style.min.css')
+
+    //- Load Angular
+    //- script(type="text/javascript", src="components/angular/angular.min.js")
+
+  body
+    //- navbar
+    include ./shard/nav
+
+    //- main-content
+    #main-content.container
+      block content
+
+
+
+
+
+
+    //- Load JavaScript libs
+
+    script(type="text/javascript", src="components/angular/angular.min.js")
+    script(type="text/javascript", src="components/angular-resource/angular-resource.min.js")
+
+    script(type="text/javascript", src="http://localhost:9603/socket.io/socket.io.js")
+    script(type="text/javascript", src="components/angular-socket-io/socket.js")
+
+    script(type="text/javascript", src="build/javascripts/elastic/elastic.min.js")
+    script(type="text/javascript", src="build/javascripts/elastic/elastic-angular-client.min.js")
+
+    //- script(type="text/javascript", src="components/jquery/jquery.min.js")
+
+
+    script(type="text/javascript", src="build/javascripts/app.min.js")
+
+    //- Custom scripts
+    script.
+      //- $(document).ready(function() {
+
+      //- });
+
+    //- block scripts
+    block scripts

@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  .div(ng-app="ml")
+    .row(ng-controller="LoggerCtrl")
+
+      .col-md-3
+        .col-md-2(style="position: fixed;")
+          ul.nav.nav-pills.nav-stacked.ml-sidebar
+            li
+              a(href="#")="ALL"
+      .col-md-9
+        h1
+          ="Meepshop"
+          small="Logger - 共 {{ total }} 筆"
+
+      .col-md-3
+      .col-md-9#logs-table
+
+        table.table.table-striped
+          thead
+            tr
+              th='#'
+              th='Service'
+              th='Level'
+              th='Time'
+              th='Message'
+          tbody
+            tr(ng-repeat="log in logs | orderBy:predicate:reverse", class="{{ log.rowColorClass }}")
+              td=""
+              td="{{ log.msg.service }}"
+              td="{{ log.level }}"
+              td="{{ log.time | date:'yyyy-MM-dd HH:mm:ss Z' }}"
+              td="{{ log.msg.message }}"
+
+        div &nbsp;
+        div &nbsp;
+        div &nbsp;
+
+
+
+block scripts
+    //- script(type="text/javascript", src="javascripts/app/app.js")
+    //- script(type="text/javascript", src="javascripts/app/factories.js")
+    //- script(type="text/javascript", src="javascripts/app/controllers.js")

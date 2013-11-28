@@ -14,7 +14,7 @@ module.exports = function(grunt) {
             files: ['index.js', 'lib/**/*.js','test/*.js'],
             tasks: ['jshint', 'exec']
         },
-        
+
         exec: {
             test: {
                 command: 'npm test',
@@ -22,18 +22,20 @@ module.exports = function(grunt) {
                 stderr: true
             }
         }
-    
+
 
 
     });
 
-// linting
-grunt.loadNpmTasks('grunt-contrib-jshint');
+    // linting
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
 
-// utils 
-grunt.loadNpmTasks('grunt-contrib-watch');
-grunt.loadNpmTasks('grunt-exec');
-grunt.loadNpmTasks('grunt-notify');
+    // utils
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-exec');
+    grunt.loadNpmTasks('grunt-notify');
+
+    grunt.registerTask('default', [ ]);
 
 };

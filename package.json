@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "inherits": "~2.0.0",
-    "tail": "~0.2.4"
+    "tail": "~0.2.4",
+    "axon": "~1.0.0",
+    "socket.io": "~0.9.16"
   },
   "devDependencies": {
     "mocha": "~1.10.0",
@@ -22,8 +24,7 @@
     "grunt-contrib-jshint": "~0.5.4",
     "grunt-exec": "~0.4.1",
     "grunt-notify": "~0.2.3",
-    "Faker": "~0.5.8",
-    "axon": "~0.6.1"
+    "Faker": "~0.5.8"
   },
   "keywords": [
     "logger",
@@ -35,5 +36,4 @@
   "license": "BSD",
   "readmeFilename": "README.md",
   "gitHead": "fb68ba39a04eacbcb040b2b7f9c83eab3ff1f50e"
-
 }

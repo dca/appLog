@@ -1,0 +1,23 @@
+{
+  "name": "webapp",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dca/appLog",
+  "authors": [
+    "Dca <dca35311@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "elastic.js": "~1.1.1",
+    "angular": "~1.2.2",
+    "angular-resource": "~1.2.2",
+    "angular-socket-io": "~0.2.0"
+  }
+}
