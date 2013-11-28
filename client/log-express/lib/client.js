@@ -5,15 +5,25 @@ module.exports.middleware = middleware;
 
 
 var Client = function Client(options) {
+
     options = options || {};
 
+    /**
+     * Config
+     */
     this.port = options.port;
     this.host = options.host || '0.0.0.0';
     this.serviceName = options.service || 'Unknown'
 
+    /**
+     * Instance
+     */
     this.axonStream = null;
     this.middleware = middleware;
 
+    /**
+     * Connect
+     */
     this.connect(this.port, this.host);
 };
 
