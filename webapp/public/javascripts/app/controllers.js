@@ -38,8 +38,8 @@ controller('LoggerCtrl', function(
 
         $scope.total = data.hits.total;
         setTimeout(function(){
-            logsTable.scrollTop = logsTable.scrollHeight;
-        }, 1);
+            jumpToBottom(logsTable);
+        }, 200);
 
     });
 
@@ -48,7 +48,7 @@ controller('LoggerCtrl', function(
         logPush(log);
         $scope.total++;
 
-        logsTable.scrollTop = logsTable.scrollHeight;
+        jumpToBottom(logsTable);
     });
 
     var mapColor = {
@@ -59,6 +59,19 @@ controller('LoggerCtrl', function(
     function logPush (log) {
         log.rowColorClass = mapColor[log.level] || '';
         $scope.logs.push(log);
+    }
+
+    function updateAllLogs (logs) {
+        // body...
+    }
+
+    function addNewLog (log) {
+        // body...
+    }
+
+    function jumpToBottom (element) {
+        element.scrollTop = element.scrollHeight;
+        return ;
     }
 
 });
