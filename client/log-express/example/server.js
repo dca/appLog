@@ -10,7 +10,9 @@ dLog = new dLog.Client({
 
 
 app.configure(function() {
-    app.use( dLog.middleware(dLog) );
+    app.use(dLog.middleware());
+    app.use(app.router);
+
 });
 
 
