@@ -17,15 +17,31 @@ factory('ejs', function(
     }
 
 
-    function query(argument) {
+    function query(args) {
+        args = args || {};
+
         var     ES  = new ESQuery;
         return  ES
             .query( ejs.MatchAllQuery() )
-            .size(10)
+            .filter( ejs.AndFilter([
+                ejs.QueryFilter( ejs.FieldQuery('level', genQueryByTrue(args.level) ) ),
+                ejs.QueryFilter( ejs.FieldQuery('service', genQueryByTrue(args.service)) )
+            ]))
+            .fields(['level', 'time', 'service', 'message'])
             .sort('time', 'desc')
+            .size(args.size || 10)
             .doSearch();
     }
 
+    function genQueryByTrue (obj) {
+        var _obj = [];
+        angular.forEach(obj, function (value, key) {
+            if (value) {
+                _obj.push(key);
+            }
+        });
+        return _obj.join(' or ');
+    }
 
     return {
         query : query

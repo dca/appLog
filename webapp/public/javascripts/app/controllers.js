@@ -21,19 +21,27 @@ controller('LoggerCtrl', function(
         'meepshop-system'  : true,
         'meepshop-store'   : true,
         'meepshop-facade'  : true,
+        'dlog-express'     : true
     };
     $scope.showLevel = {
-        error   : true,
+        error   : false,
         warning : true,
         info    : true,
-        debug   : true,
+        debug   : false,
     };
 
-    ejs.query().then(function(data) {
+    var args = {
+        level   : $scope.showLevel,
+        service : $scope.showService,
+        size    : $scope.size
+    };
+
+    ejs.query(args).then(function(data) {
 
         var logs = data.hits.hits || [];
+
         logs.forEach(function(log){
-            logPush(log._source);
+            log.fields && logPush(log.fields);
         });
 
         $scope.total = data.hits.total;
@@ -73,5 +81,40 @@ controller('LoggerCtrl', function(
         element.scrollTop = element.scrollHeight;
         return ;
     }
+
+    function logReloadAll () {
+        console.log('message');
+        $scope.logs = [];
+
+        var args = {
+            level   : $scope.showLevel,
+            service : $scope.showService,
+            size    : $scope.size
+        };
+
+        ejs.query(args).then(function(data) {
+            var logs = data.hits.hits || [];
+
+            logs.forEach(function(log){
+                log.fields && logPush(log.fields);
+            });
+
+            $scope.total = data.hits.total;
+            setTimeout(function(){
+                jumpToBottom(logsTable);
+            }, 200);
+
+        });
+    }
+
+    $scope.$watch('size', logReloadAll);
+    $scope.$watch('showLevel.error', logReloadAll );
+    $scope.$watch('showLevel.warning', logReloadAll );
+    $scope.$watch('showLevel.info', logReloadAll );
+    $scope.$watch('showLevel.debug', logReloadAll );
+
+    $scope.$watch(function() {
+        return $scope.showService['meepshop-admin'];
+    }, logReloadAll );
 
 });
