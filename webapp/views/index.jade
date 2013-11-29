@@ -74,13 +74,16 @@ block content
               th='Level'
               th='Time'
               th='Message'
+              th='Stack'
           tbody
             tr(ng-repeat="log in logs | orderBy:predicate:reverse", class="{{ log.rowColorClass }}")
               td=""
-              td="{{ log.msg.service }}"
+              td="{{ log.service }}"
               td="{{ log.level }}"
-              td="{{ log.time | date:'yyyy-MM-dd HH:mm:ss Z' }}"
-              td="{{ log.msg.message }}"
+              td="{{ log.time | date:'yyyy-MM-dd HH:mm:ss' }}"
+              td="{{ log.message }}"
+              td
+                i.fa.fa-code
 
         div &nbsp;
         div &nbsp;
