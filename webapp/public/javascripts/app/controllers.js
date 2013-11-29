@@ -12,8 +12,22 @@ controller('LoggerCtrl', function(
 
     $scope.logs = [];
     $scope.height = window.innerHeight - 150;
-    $scope.predicate = 'time';
 
+    $scope.predicate = 'time';
+    $scope.size = 10;
+
+    $scope.showService = {
+        admin   : true,
+        system  : true,
+        store   : true,
+        facade  : true,
+    };
+    $scope.showLevel = {
+        error   : true,
+        warning : true,
+        info    : true,
+        debug   : true,
+    };
 
     ejs.query().then(function(data) {
 
@@ -25,7 +39,7 @@ controller('LoggerCtrl', function(
         $scope.total = data.hits.total;
         setTimeout(function(){
             logsTable.scrollTop = logsTable.scrollHeight;
-        }, 1000);
+        }, 1);
 
     });
 

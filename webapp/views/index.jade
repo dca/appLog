@@ -6,9 +6,59 @@ block content
 
       .col-md-3
         .col-md-2(style="position: fixed;")
+          input.form-control(type="number", ng-model="size")
           ul.nav.nav-pills.nav-stacked.ml-sidebar
+            li.sidebar-head
+              a="Service"
             li
-              a(href="#")="ALL"
+              a(href="#")
+                input(type="checkbox", id="chkShowAdmin", ng-model="showService.admin",value="true")
+                label(for="chkShowAdmin")
+                  span
+                  =" Meepshop-Admin"
+            li
+              a(href="#")
+                input(type="checkbox", id="chkShowSystem", ng-model="showService.system")
+                label(for="chkShowSystem")
+                  span
+                  =" Meepshop-System"
+            li
+              a(href="#")
+                input(type="checkbox", id="chkShowStore", ng-model="showService.store")
+                label(for="chkShowStore")
+                  span
+                  =" Meepshop-Store"
+            li
+              a(href="#")
+                input(type="checkbox", id="chkShowFacade", ng-model="showService.facade")
+                label(for="chkShowFacade")
+                  span
+                  =" Meepshop-Facade"
+            li.sidebar-head
+              a="Level"
+            li
+              a(href="#")
+                input(type="checkbox", id="chkShowError", ng-model="showLevel.error")
+                label(for="chkShowError")
+                  span
+                  =" Error"
+            li
+              a(href="#")
+                input(type="checkbox", id="chkShowWarning", ng-model="showLevel.warning")
+                label(for="chkShowWarning")
+                  span
+                  =" Warning"
+              a(href="#")
+                input(type="checkbox", id="chkShowInfo", ng-model="showLevel.info")
+                label(for="chkShowInfo")
+                  span
+                  =" INFO"
+              a(href="#")
+                input(type="checkbox", id="chkShowDebug", ng-model="showLevel.debug")
+                label(for="chkShowDebug")
+                  span
+                  =" DEBUG"
+
       .col-md-9
         h1
           ="Meepshop"
@@ -16,7 +66,6 @@ block content
 
       .col-md-3
       .col-md-9#logs-table
-
         table.table
           thead
             tr
@@ -36,7 +85,6 @@ block content
         div &nbsp;
         div &nbsp;
         div &nbsp;
-
 
 
 block scripts
