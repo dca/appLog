@@ -1,7 +1,6 @@
 var axonStream = require('./axonStream');
 var middleware = require('./middleware-express');
 
-module.exports.middleware = middleware;
 
 
 var Client = function Client(options) {
@@ -26,8 +25,6 @@ var Client = function Client(options) {
      */
     this.connect(this.port, this.host);
 };
-
-module.exports.Client = Client;
 
 
 
@@ -62,3 +59,14 @@ Client.prototype.send = function (event, message) {
 
     this.axonStream.emit(event, msg);
 }
+
+
+
+
+/**
+ *
+ * Exports
+ *
+ */
+module.exports.middleware = middleware;
+module.exports.Client = Client;
