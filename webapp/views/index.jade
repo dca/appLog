@@ -12,25 +12,25 @@ block content
               a="Service"
             li
               a(href="#")
-                input(type="checkbox", id="chkShowAdmin", ng-model="showService.admin",value="true")
+                input(type="checkbox", id="chkShowAdmin", ng-model="showService['meepshop-admin']",value="true")
                 label(for="chkShowAdmin")
                   span
                   =" Meepshop-Admin"
             li
               a(href="#")
-                input(type="checkbox", id="chkShowSystem", ng-model="showService.system")
+                input(type="checkbox", id="chkShowSystem", ng-model="showService['meepshop-system']")
                 label(for="chkShowSystem")
                   span
                   =" Meepshop-System"
             li
               a(href="#")
-                input(type="checkbox", id="chkShowStore", ng-model="showService.store")
+                input(type="checkbox", id="chkShowStore", ng-model="showService['meepshop-store']")
                 label(for="chkShowStore")
                   span
                   =" Meepshop-Store"
             li
               a(href="#")
-                input(type="checkbox", id="chkShowFacade", ng-model="showService.facade")
+                input(type="checkbox", id="chkShowFacade", ng-model="showService['meepshop-facade']")
                 label(for="chkShowFacade")
                   span
                   =" Meepshop-Facade"
@@ -62,7 +62,7 @@ block content
       .col-md-9
         h1
           ="Meepshop"
-          small="Logger - 共 {{ total }} 筆"
+          small="Logger - 共 {{ total }} 筆 {{showService['meepshop-admin']}}"
 
       .col-md-3
       .col-md-9#logs-table

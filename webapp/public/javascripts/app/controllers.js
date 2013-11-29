@@ -17,10 +17,10 @@ controller('LoggerCtrl', function(
     $scope.size = 10;
 
     $scope.showService = {
-        admin   : true,
-        system  : true,
-        store   : true,
-        facade  : true,
+        'meepshop-admin'   : true,
+        'meepshop-system'  : true,
+        'meepshop-store'   : true,
+        'meepshop-facade'  : true,
     };
     $scope.showLevel = {
         error   : true,
