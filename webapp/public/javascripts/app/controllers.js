@@ -17,11 +17,11 @@ controller('LoggerCtrl', function(
     $scope.size = 10;
 
     $scope.showService = {
-        'meepshop-admin'   : true,
-        'meepshop-system'  : true,
-        'meepshop-store'   : true,
-        'meepshop-facade'  : true,
-        'dlog-express'     : true
+        'admin'   : true,
+        'system'  : true,
+        'store'   : true,
+        'facade'  : true,
+        'express'     : true
     };
     $scope.showLevel = {
         error   : false,
@@ -107,14 +107,21 @@ controller('LoggerCtrl', function(
         });
     }
 
-    $scope.$watch('size', logReloadAll);
-    $scope.$watch('showLevel.error', logReloadAll );
-    $scope.$watch('showLevel.warning', logReloadAll );
-    $scope.$watch('showLevel.info', logReloadAll );
-    $scope.$watch('showLevel.debug', logReloadAll );
+    setTimeout(function(){
+        $scope.$watch('size', logReloadAll);
+        $scope.$watch('showLevel.error', logReloadAll );
+        $scope.$watch('showLevel.warning', logReloadAll );
+        $scope.$watch('showLevel.info', logReloadAll );
+        $scope.$watch('showLevel.debug', logReloadAll );
 
-    $scope.$watch(function() {
-        return $scope.showService['meepshop-admin'];
-    }, logReloadAll );
+        $scope.$watch('showService.admin', logReloadAll );
+        $scope.$watch('showService.system', logReloadAll );
+        $scope.$watch('showService.store', logReloadAll );
+        $scope.$watch('showService.facade', logReloadAll );
+        $scope.$watch('showService.express', logReloadAll );
+    }, 1000);
+
+
+
 
 });
