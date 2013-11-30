@@ -8,63 +8,27 @@ block content
         .col-md-2(style="position: fixed;")
           input.form-control(type="number", ng-model="size")
           ul.nav.nav-pills.nav-stacked.ml-sidebar
+
+            //- service select
             li.sidebar-head
               a="Service"
-            li
+            li(ng-repeat="(label, val) in showService")
               a(href="#")
-                input(type="checkbox", id="chkShowAdmin", ng-model="showService['admin']",value="true")
-                label(for="chkShowAdmin")
+                input(type="checkbox", id="service-{{ label }}", ng-model="showService[label]", value="{{ val }}")
+                label(for="service-{{ label }}")
                   span
-                  =" Meepshop-Admin"
-            li
-              a(href="#")
-                input(type="checkbox", id="chkShowSystem", ng-model="showService['system']")
-                label(for="chkShowSystem")
-                  span
-                  =" Meepshop-System"
-            li
-              a(href="#")
-                input(type="checkbox", id="chkShowStore", ng-model="showService['store']")
-                label(for="chkShowStore")
-                  span
-                  =" Meepshop-Store"
-            li
-              a(href="#")
-                input(type="checkbox", id="chkShowFacade", ng-model="showService['facade']")
-                label(for="chkShowFacade")
-                  span
-                  =" Meepshop-Facade"
-            li
-              a(href="#")
-                input(type="checkbox", id="chkShowDlog", ng-model="showService['express']")
-                label(for="chkShowDlog")
-                  span
-                  =" Dlog-express"
+                  =" {{ label }}"
 
             li.sidebar-head
               a="Level"
-            li
+
+            li(ng-repeat="(label, val) in showLevel")
               a(href="#")
-                input(type="checkbox", id="chkShowError", ng-model="showLevel.error")
-                label(for="chkShowError")
+                input(type="checkbox", id="level-{{ label }}", ng-model="showLevel[label]", value="{{ val }}")
+                label(for="level-{{ label }}")
                   span
-                  =" Error"
-            li
-              a(href="#")
-                input(type="checkbox", id="chkShowWarning", ng-model="showLevel.warning")
-                label(for="chkShowWarning")
-                  span
-                  =" Warning"
-              a(href="#")
-                input(type="checkbox", id="chkShowInfo", ng-model="showLevel.info")
-                label(for="chkShowInfo")
-                  span
-                  =" INFO"
-              a(href="#")
-                input(type="checkbox", id="chkShowDebug", ng-model="showLevel.debug")
-                label(for="chkShowDebug")
-                  span
-                  =" DEBUG"
+                  =" {{ label }}"
+
 
       .col-md-9
         h1

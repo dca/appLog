@@ -24,10 +24,10 @@ controller('LoggerCtrl', function(
         'express'     : true
     };
     $scope.showLevel = {
-        error   : false,
-        warning : true,
-        info    : true,
-        debug   : false,
+        'error'   : false,
+        'warning' : true,
+        'info'    : true,
+        'debug'   : false,
     };
 
     var args = {
