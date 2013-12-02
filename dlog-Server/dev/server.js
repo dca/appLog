@@ -21,24 +21,14 @@ var axon = require('axon'),
     axonSocket = axon.socket('sub-emitter');
 
 
-
-
-
 /**
  * Bind axon listener on port
- *
- *
  */
 axonSocket.bind(9602, '0.0.0.0');
 
 
-
-
-
 /**
  * log on message in
- *
- *
  */
 axonSocket.on('*', function(event) {
     logger.log.apply(logger, arguments);
@@ -49,9 +39,12 @@ axonSocket.on('*', function(event) {
 
 
 /**
- * Socket.io
+ * Http listener
  *
  *
  */
 
-// on lib
+var httpListen = require('../lib/listen-http');
+
+httpListen = new httpListen();
+httpListen.createServer(logger);
