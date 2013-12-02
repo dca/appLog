@@ -14,7 +14,7 @@ controller('LoggerCtrl', function(
     $scope.height = window.innerHeight - 150;
 
     $scope.predicate = 'time';
-    $scope.size = 10;
+    $scope.size = 100;
 
     $scope.showService = {
         'admin'   : true,
@@ -24,10 +24,10 @@ controller('LoggerCtrl', function(
         'express'     : true
     };
     $scope.showLevel = {
-        'error'   : false,
+        'error'   : true,
         'warning' : true,
         'info'    : true,
-        'debug'   : false,
+        'debug'   : true,
     };
 
     var args = {

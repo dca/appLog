@@ -5,7 +5,8 @@
 angular.module('ml', [
     'ngResource',
     'elasticjs.service',
-    'btford.socket-io'
+    'btford.socket-io',
+    'ui.bootstrap'
 ]).
 
 config(function(

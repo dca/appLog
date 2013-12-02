@@ -54,7 +54,7 @@ block content
               td="{{ log.time | date:'yyyy-MM-dd HH:mm:ss' }}"
               td="{{ log.message }}"
               td
-                i.fa.fa-code
+                i.fa.fa-code(popover-placement="auto", popover="{{ log.stackStr }}", popover-trigger="mouseenter", popover-title="The title." )
 
         div &nbsp;
         div &nbsp;

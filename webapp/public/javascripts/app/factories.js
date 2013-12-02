@@ -27,7 +27,7 @@ factory('ejs', function(
                 ejs.QueryFilter( ejs.FieldQuery('level', genQueryByTrue(args.level) ) ),
                 ejs.QueryFilter( ejs.FieldQuery('service', genQueryByTrue(args.service)) )
             ]))
-            .fields(['level', 'time', 'service', 'message'])
+            .fields(['level', 'time', 'service', 'message', 'stackStr'])
             .sort('time', 'desc')
             .size(args.size || 10)
             .doSearch();

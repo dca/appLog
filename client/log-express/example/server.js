@@ -24,6 +24,7 @@ var KeyIndex = function(){
 app.get('*', function (req, res) {
     var _level = level[ KeyIndex() ];
 
+    // example: dLog.send( 'ERROR', 'error here');
     dLog.send( _level,  _level + ' !! Hello!!');
     res.send('Hello World!!');
 });
