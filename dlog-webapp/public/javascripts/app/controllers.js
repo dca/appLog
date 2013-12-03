@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ml').
+angular.module('dlog').
 
 controller('LoggerCtrl', function(
     $scope,

@@ -2,7 +2,7 @@
 /*global angular:true */
 'use strict';
 
-angular.module('ml', [
+angular.module('dlog', [
     'ngResource',
     'elasticjs.service',
     'btford.socket-io',

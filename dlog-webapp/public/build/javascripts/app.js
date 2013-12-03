@@ -2,7 +2,7 @@
 /*global angular:true */
 'use strict';
 
-angular.module('ml', [
+angular.module('dlog', [
     'ngResource',
     'elasticjs.service',
     'btford.socket-io',
@@ -19,7 +19,7 @@ config(function(
 
 'use strict';
 
-angular.module('ml').
+angular.module('dlog').
 
 controller('LoggerCtrl', function(
     $scope,
@@ -127,7 +127,21 @@ controller('LoggerCtrl', function(
 
 'use strict';
 
-angular.module('ml').
+angular.module('dlog').
+
+factory('Logs', function(
+    ejs
+){
+    function function_name (argument) {
+        // body...
+    }
+
+    return this;
+});
+
+'use strict';
+
+angular.module('dlog').
 
 factory('ejs', function(
     $q,
