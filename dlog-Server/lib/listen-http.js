@@ -7,24 +7,24 @@ var express = require('express');
 
 var httpListen = module.exports = function httpListen() {
     this.pluginName = 'httpListen';
+    this.logger     = null;
     return this;
 };
 
 httpListen.prototype.createServer = function(logger) {
-    var app = express();
+    var app;
+    var _self = this;
 
+    _self.logger = logger;
+
+    app = express();
     app.use(express.bodyParser());
 
-    app.post('/message', function(req, res){
-        if (req.body) {
-            var message = req.body;
-            var level   = req.body.level;
-            delete message.level;
-
-            logger.log.apply(logger, [level, message]);
+    app.get('/message', function(req, res){
+        if (req.query) {
+            _self.send(req.query.msg);
         }
-
-        res.send('done');
+        res.jsonp({status: 'done'});
     });
 
     app.listen(9610);
@@ -32,4 +32,20 @@ httpListen.prototype.createServer = function(logger) {
     return this;
 };
 
+
+httpListen.prototype.send = function(msg) {
+    //
+    var _level = 'INFO';
+    var logger = this.logger;
+
+    if (msg.message[0] ==='DEBUG'){
+        level = msg.message.shift();
+    }
+    if (msg.message.length === 1) {
+        msg.message = msg.message.shift();
+    }
+
+    // console.log(msg);
+    logger.log.apply(logger, [level, msg] );
+};
 

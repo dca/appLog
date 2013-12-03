@@ -41,7 +41,8 @@ controller('LoggerCtrl', function(
         'store'   : true,
         'facade'  : true,
         'front'   : true,
-        'express' : true
+        'express' : true,
+        'AdminFront' : true
     };
     $scope.showLevel = {
         'error'   : true,

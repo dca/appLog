@@ -121,6 +121,14 @@ Log.prototype.log = function(levelStr, args) {
 
 Log.prototype._log = function(levelStr, args) {
     if (exports[levelStr] <= this.level) {
+
+        var msg = args.message || '';
+
+        if (msg && typeof msg !== 'string'){
+            args.message = JSON.stringify( msg );
+        }
+
+
         var obj = {
             level : levelStr,
             time  : Date.now(),
