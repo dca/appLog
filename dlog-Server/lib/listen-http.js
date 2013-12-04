@@ -35,10 +35,10 @@ httpListen.prototype.createServer = function(logger) {
 
 httpListen.prototype.send = function(msg) {
     //
-    var _level = 'INFO';
+    var level = 'INFO';
     var logger = this.logger;
 
-    if (msg.message[0] ==='DEBUG'){
+    if ( levelmap.indexOf( msg.message[0] ) >-1 ){
         level = msg.message.shift();
     }
     if (msg.message.length === 1) {
@@ -49,3 +49,4 @@ httpListen.prototype.send = function(msg) {
     logger.log.apply(logger, [level, msg] );
 };
 
+var levelmap=['ERROR','INFO','WARNING', 'DEBUG'];
