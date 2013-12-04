@@ -5,16 +5,16 @@ angular.module('dlog').
 controller('LoggerCtrl', function(
     $scope,
     ejs,
-    socket
+    socket,
+    Logs
 ){
 
     var logsTable = document.querySelector('body');
-
     $scope.logs = [];
-    $scope.height = window.innerHeight - 150;
+    $scope.size = 100;
 
     $scope.predicate = 'time';
-    $scope.size = 100;
+    $scope.height = window.innerHeight - 150;
 
     $scope.showService = {
         'admin'   : true,
@@ -32,76 +32,33 @@ controller('LoggerCtrl', function(
         'debug'   : true,
     };
 
-    var args = {
-        level   : $scope.showLevel,
-        service : $scope.showService,
-        size    : $scope.size
-    };
+    $scope.logReload = reload;
 
-    ejs.query(args).then(function(data) {
-
-        var logs = data.hits.hits || [];
-
-        logs.forEach(function(log){
-            log.fields && logPush(log.fields);
+    function reload () {
+        Logs.update($scope).then(function(res) {
+            $scope.logs = res.logs;
+            $scope.total = res.total;
         });
+    }
 
-        $scope.total = data.hits.total;
-        setTimeout(function(){
-            jumpToBottom(logsTable);
-        }, 200);
 
-    });
 
 
     socket.on('log', function (log) {
-        logPush(log);
-        $scope.total++;
+        Logs.new(log).then(function(res) {
+            $scope.logs = res.logs;
+            $scope.total = res.total;
+        });
 
         jumpToBottom(logsTable);
     });
 
-    var mapColor = {
-        'ERROR' : 'danger',
-        'WARNING' : 'warning'
-    };
-
-    function logPush (log) {
-        log.rowColorClass = mapColor[log.level] || '';
-        $scope.logs.push(log);
-    }
 
     function jumpToBottom (element) {
         element.scrollTop = element.scrollHeight;
         return ;
     }
 
-    $scope.logReloadAll = function logReloadAll () {
-        console.log('message');
-        $scope.logs = [];
 
-        var args = {
-            level   : $scope.showLevel,
-            service : $scope.showService,
-            size    : $scope.size
-        };
-
-        ejs.query(args).then(function(data) {
-            var logs = data.hits.hits || [];
-
-            logs.forEach(function(log){
-                log.fields && logPush(log.fields);
-            });
-
-            $scope.total = data.hits.total;
-            setTimeout(function(){
-                jumpToBottom(logsTable);
-            }, 200);
-
-        });
-    }
-
-
-
-
+    reload();
 });

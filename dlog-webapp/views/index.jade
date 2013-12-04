@@ -6,7 +6,7 @@ block content
 
       .col-md-3
         .col-md-2(style="position: fixed;")
-          input.form-control(type="number", ng-model="size", ng-change="logReloadAll()")
+          input.form-control(type="number", ng-model="size", ng-change="logReload()")
           ul.nav.nav-pills.nav-stacked.dlog-sidebar
 
             //- service select
@@ -14,7 +14,7 @@ block content
               a="Service"
             li(ng-repeat="(label, val) in showService")
               a(href="#")
-                input(type="checkbox", id="service-{{ label }}", ng-model="showService[label]", value="{{ val }}", ng-change="logReloadAll()")
+                input(type="checkbox", id="service-{{ label }}", ng-model="showService[label]", value="{{ val }}", ng-change="logReload()")
                 label(for="service-{{ label }}")
                   span
                   =" {{ label }}"
@@ -24,7 +24,7 @@ block content
 
             li(ng-repeat="(label, val) in showLevel")
               a(href="#")
-                input(type="checkbox", id="level-{{ label }}", ng-model="showLevel[label]", value="{{ val }}", ng-change="logReloadAll()")
+                input(type="checkbox", id="level-{{ label }}", ng-model="showLevel[label]", value="{{ val }}", ng-change="logReload()")
                 label(for="level-{{ label }}")
                   span
                   =" {{ label }}"
@@ -47,7 +47,7 @@ block content
               th='Message'
               th='Stack'
           tbody
-            tr(ng-repeat="log in logs | orderBy:predicate:reverse", class="{{ log.rowColorClass }}")
+            tr(ng-repeat="log in logs | orderBy:predicate:reverse", class="{{ log.level }}")
               td=""
               td="{{ log.service }}"
               td="{{ log.level }}"
