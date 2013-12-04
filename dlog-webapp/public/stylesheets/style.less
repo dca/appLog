@@ -35,13 +35,23 @@ body{
     background-color: @dlog-sidebar-focus;
 }
 
-// #logs-table .INFO{
-//     background-color : blue;
-// }
+//
+// logs-table log level color
+//
 
-
-#logs-table .ERROR{
-    background-color : @brand-danger;
+#logs-table {
+    .ERROR{
+        background-color : @state-danger-bg;
+    }
+    .WARNING{
+        background-color : @state-warning-bg;
+    }
+    .INFO{
+        background-color : @state-info-bg;
+    }
+    .DEBUG{
+        background-color : @table-bg-active;
+    }
 }
 
 
