@@ -37,7 +37,7 @@
 
 
 
-    dlog = new dlog();
+    window.dlog = new dlog();
 
     dlog.log('DEBUG', 'HIHI');
 
