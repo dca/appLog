@@ -30,6 +30,7 @@ factory('Logs', function(
         var _args = {
             level   : args.showLevel || {},
             service : args.showService || {},
+            queryStr: args.queryStr || null,
             size    : args.size || 100
         };
 

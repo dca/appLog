@@ -7,6 +7,7 @@ block content
       .col-md-3
         .col-md-2(style="position: fixed;")
           input.form-control(type="number", ng-model="size", ng-change="logReload()")
+          input.form-control(type="text", ng-model="queryStr", ng-change="logReload()")
           ul.nav.nav-pills.nav-stacked.dlog-sidebar
 
             //- service select

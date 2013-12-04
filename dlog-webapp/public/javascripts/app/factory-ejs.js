@@ -20,9 +20,11 @@ factory('ejs', function(
     function query(args) {
         args = args || {};
 
-        var     ES  = new ESQuery;
+        var ES  = new ESQuery;
+        var _queryStr = args.queryStr ? ejs.MatchQuery( 'message', args.queryStr ) : ejs.MatchAllQuery();
+
         return  ES
-            .query( ejs.MatchAllQuery() )
+            .query( _queryStr )
             .filter( ejs.AndFilter([
                 ejs.QueryFilter( ejs.FieldQuery('level', genQueryByTrue(args.level) ) ),
                 ejs.QueryFilter( ejs.FieldQuery('service', genQueryByTrue(args.service)) )
