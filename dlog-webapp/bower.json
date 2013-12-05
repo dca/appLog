@@ -1,7 +1,7 @@
 {
   "name": "webapp",
   "version": "0.0.0",
-  "homepage": "https://github.com/dca/appLog",
+  "homepage": "https://github.com/dLog/appLog",
   "authors": [
     "Dca <dca35311@gmail.com>"
   ],
@@ -14,12 +14,13 @@
     "tests"
   ],
   "dependencies": {
+    "angular": "1.2.3",
     "jquery": "~2.0.3",
     "elastic.js": "~1.1.1",
-    "angular": "~1.2.3",
     "angular-resource": "~1.2.2",
     "angular-socket-io": "~0.2.0",
     "moment": "~2.4.0",
-    "angular-moment": "~0.5.2"
+    "bootstrap": "~3.0.2",
+    "angular-bootstrap3": "*"
   }
 }
