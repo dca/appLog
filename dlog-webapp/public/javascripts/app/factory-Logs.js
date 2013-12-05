@@ -55,10 +55,12 @@ factory('Logs', function(
     }
 
     Logs.prototype.new = function(log){
-        var _self = this;
-        // console.log(log);
+        this.logs.push(log);
+        this.total++;
 
-        _self.logs.push(log);
+        var defer = $q.defer();
+        defer.resolve(this);
+        return defer.promise;
     }
 
 
