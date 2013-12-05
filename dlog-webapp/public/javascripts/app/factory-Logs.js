@@ -31,6 +31,8 @@ factory('Logs', function(
             level   : args.showLevel || {},
             service : args.showService || {},
             queryStr: args.queryStr || null,
+            timeStart: args.timeStart || null,
+            timeEnd : args.timeEnd || null,
             size    : args.size || 100
         };
 
@@ -54,17 +56,10 @@ factory('Logs', function(
 
     Logs.prototype.new = function(log){
         var _self = this;
-        console.log(log);
+        // console.log(log);
 
         _self.logs.push(log);
     }
-
-    var mapColor = {
-        'ERROR' : 'danger',
-        'WARNING' : 'warning'
-    };
-
-
 
 
     return new Logs();

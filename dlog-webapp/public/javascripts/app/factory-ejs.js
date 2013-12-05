@@ -22,6 +22,16 @@ factory('ejs', function(
 
         var ES  = new ESQuery;
         var _queryStr = args.queryStr ? ejs.MatchQuery( 'message', args.queryStr ) : ejs.MatchAllQuery();
+        var _time = ejs.RangeFilter('time')
+
+        if (args.timeStart) {
+            var _start = moment(args.timeStart).valueOf();
+            _time=_time.gte(_start);
+        }
+        if (args.timeEnd) {
+            var _end = moment(args.timeEnd).valueOf();
+            _time=_time.lte(args._end);
+        }
 
         return  ES
             .query( _queryStr )
@@ -44,6 +54,8 @@ factory('ejs', function(
         });
         return _obj.join(' or ');
     }
+
+
 
     return {
         query : query

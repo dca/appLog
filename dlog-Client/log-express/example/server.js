@@ -29,7 +29,7 @@ app.get('*', function (req, res) {
     // example: dLog.send( 'ERROR', 'error here');
     // dLog.send( _level,  _level + ' !! Hello!!');
 
-    dLog.log('DDDD');
+    dLog.log({a:1});
 
     res.send('Hello World!!');
 });

@@ -35,6 +35,10 @@ block content
         h1
           ="Meepshop"
           small="Logger - 共 {{ total }} 筆 {{showService['meepshop-admin']}} {{size}}"
+        .col-md-4
+            input#timeStart.form-control(type="datetime-local", value="1996-12-19T16:39:57", ng-model="timeStart", ng-change="logReload()")
+        .col-md-4
+            input#timeEnd.form-control(type="datetime-local", value="1996-12-19T16:39:57", ng-model="timeEnd", ng-change="logReload()")
 
       .col-md-3
       .col-md-9#logs-table

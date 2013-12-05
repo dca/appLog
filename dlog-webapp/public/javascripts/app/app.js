@@ -6,7 +6,8 @@ angular.module('dlog', [
     'ngResource',
     'elasticjs.service',
     'btford.socket-io',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angularMoment'
 ]).
 
 config(function(

@@ -16,6 +16,10 @@ controller('LoggerCtrl', function(
     $scope.predicate = 'time';
     $scope.height = window.innerHeight - 150;
 
+    $scope.timeStart = '2013-12-01T00:00:00';
+    $scope.timeEnd   = '2013-12-05T00:00:00';
+
+
     $scope.showService = {
         'admin'   : true,
         'system'  : true,
@@ -35,6 +39,7 @@ controller('LoggerCtrl', function(
     $scope.logReload = reload;
 
     function reload () {
+        console.log($scope);
         Logs.update($scope).then(function(res) {
             $scope.logs = res.logs;
             $scope.total = res.total;
