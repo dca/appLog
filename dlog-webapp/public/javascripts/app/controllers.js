@@ -16,8 +16,8 @@ controller('LoggerCtrl', function(
     $scope.predicate = 'time';
     $scope.height = window.innerHeight - 150;
 
-    $scope.timeStart = '2013-12-01T00:00:00';
-    $scope.timeEnd   = '2013-12-05T00:00:00';
+    // $scope.timeStart = '2013-12-01T00:00:00';
+    // $scope.timeEnd   = '2013-12-05T00:00:00';
 
 
     $scope.showService = {
