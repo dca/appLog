@@ -10,9 +10,10 @@ var Client = function Client(options) {
     /**
      * Config
      */
-    this.port = options.port;
-    this.host = options.host || '0.0.0.0';
-    this.serviceName = options.service || 'Unknown'
+    // this.port = options.port;
+    // this.host = options.host || '0.0.0.0';
+    this.serviceName = options.service || 'Unknown';
+    this.hosts = options.hosts || [];
 
     /**
      * Instance
@@ -23,7 +24,7 @@ var Client = function Client(options) {
     /**
      * Connect
      */
-    this.connect(this.port, this.host);
+    this.connect(this.hosts);
 };
 
 
@@ -38,8 +39,8 @@ var Client = function Client(options) {
  * @api private
  */
 
-Client.prototype.connect = function (port, host) {
-    this.axonStream = new axonStream(port, host);
+Client.prototype.connect = function (hosts) {
+    this.axonStream = new axonStream(hosts);
 }
 
 /**
@@ -57,9 +58,13 @@ Client.prototype.send = function (event, message) {
         stackStr: (new Error()).stack
     };
 
-    this.axonStream.emit(event, msg);
+    this.axonStream.send(event, msg);
 }
 
+
+Client.prototype.log = function log(message) {
+    this.send('DEBUG', message );
+}
 
 
 

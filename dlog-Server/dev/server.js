@@ -18,8 +18,10 @@ var logger  = new Log();
  * @type Event
  */
 var axon = require('axon'),
-    axonSocket = axon.socket('sub-emitter');
+    axonSocket = axon.socket('pull');
 
+
+axonSocket.format('json');
 
 /**
  * Bind axon listener on port
@@ -30,10 +32,10 @@ axonSocket.bind(9602, '0.0.0.0');
 /**
  * log on message in
  */
-axonSocket.on('*', function(event) {
+axonSocket.on('message', function() {
+    console.log('----------axonSocket----------');
     logger.log.apply(logger, arguments);
 });
-
 
 
 

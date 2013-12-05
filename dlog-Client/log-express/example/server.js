@@ -4,8 +4,10 @@ var app = express();
 var dLog = require('../');
 
 dLog = new dLog.Client({
-    service : 'meepshop-system',
-    port: 9602
+    service : 'meepshop-admin',
+    hosts: [
+        'tcp://0.0.0.0:9602'
+    ]
 });
 
 
@@ -25,7 +27,10 @@ app.get('*', function (req, res) {
     var _level = level[ KeyIndex() ];
 
     // example: dLog.send( 'ERROR', 'error here');
-    dLog.send( _level,  _level + ' !! Hello!!');
+    // dLog.send( _level,  _level + ' !! Hello!!');
+
+    dLog.log('DDDD');
+
     res.send('Hello World!!');
 });
 
