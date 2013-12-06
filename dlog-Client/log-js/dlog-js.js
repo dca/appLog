@@ -1,8 +1,9 @@
 ;(function($) {
 
-    var host    = 'http://127.0.0.1:9610';
-    var logApi  = '/message';
-    var Service = 'Unknown';
+    var host        = 'http://127.0.0.1:9610';
+    var logApi      = '/message';
+    var Service     = 'Unknown';
+    var levelDefault= 'INFO';
 
     var dlog = function dlog (options) {
         return this;
@@ -39,7 +40,7 @@
     };
 
     dlog.prototype.log = function () {
-        _log('INFO', arguments);
+        _log( levelDefault, arguments);
     };
 
     dlog.prototype.info = function () {
