@@ -8,7 +8,10 @@ controller('LoggerCtrl', function(
     socket,
     Logs
 ){
-    $scope.showService = Logs.getService($scope);
+    Logs.getService().then(function(service) {
+        $scope.showService = service;
+        reload();
+    });
 
     var logsTable = document.querySelector('body');
     $scope.logs = [];
@@ -56,10 +59,6 @@ controller('LoggerCtrl', function(
         element.scrollTop = element.scrollHeight;
         return ;
     }
-
-    setTimeout(function(){
-        reload();
-    }, 100);
 
 
 });

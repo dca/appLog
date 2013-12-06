@@ -18,7 +18,7 @@ factory('Logs', function(
 
         this.service = service;
 
-        _getService();
+        this.getService();
     }
 
     // Logs.prototype.setFilter = function(scope){
@@ -60,8 +60,9 @@ factory('Logs', function(
 
     }
 
-    function _getService(){
-        // var defer = $q.defer();
+    Logs.prototype.getService = function(){
+        var defer = $q.defer();
+
         ejs.groupby('service').then(function(res) {
             var _service = [];
 
@@ -75,12 +76,9 @@ factory('Logs', function(
                 service[el.term] = true;
             });
 
-            console.log(service);
+            defer.resolve(service);
         });
-    }
-
-    Logs.prototype.getService = function(scope){
-        return service;
+        return defer.promise;
     }
 
     Logs.prototype.new = function(log){
