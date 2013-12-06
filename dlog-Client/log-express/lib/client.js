@@ -7,11 +7,11 @@ var Client = function Client(options) {
 
     options = options || {};
 
+    this.levelDefault = 'INFO';
+
     /**
      * Config
      */
-    // this.port = options.port;
-    // this.host = options.host || '0.0.0.0';
     this.serviceName = options.service || 'Unknown';
     this.hosts = options.hosts || [];
 
@@ -58,14 +58,32 @@ Client.prototype.send = function (event, message) {
         stackStr: (new Error()).stack
     };
 
-    this.axonStream.send(event, msg);
+    var self = this;
+    process.nextTick(function() {
+        self.axonStream.send(event, msg);
+    });
 }
 
 
 Client.prototype.log = function log(message) {
+    this.send(this.levelDefault, message );
+}
+
+Client.prototype.info = function info(message) {
+    this.send('INFO', message );
+}
+
+Client.prototype.debug = function debug(message) {
     this.send('DEBUG', message );
 }
 
+Client.prototype.warning = function warning(message) {
+    this.send('WARNING', message );
+}
+
+Client.prototype.error = function error(message) {
+    this.send('ERROR', message );
+}
 
 
 /**
