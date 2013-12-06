@@ -8,22 +8,14 @@ controller('LoggerCtrl', function(
     socket,
     Logs
 ){
-    Logs.getService().then(function(service) {
-        $scope.showService = service;
-        reload();
-    });
 
-    var logsTable = document.querySelector('body');
+
     $scope.logs = [];
     $scope.size = 100;
 
-    $scope.predicate = 'time';
-    $scope.height = window.innerHeight - 150;
-
-    // $scope.timeStart = '2013-12-01T00:00:00';
-    // $scope.timeEnd   = '2013-12-05T00:00:00';
-
-
+    $scope.predicate    = 'time';
+    $scope.logReload    = reload;
+    $scope.height       = window.innerHeight - 150;
 
     $scope.showLevel = {
         'error'   : true,
@@ -32,17 +24,11 @@ controller('LoggerCtrl', function(
         'debug'   : true,
     };
 
-    $scope.logReload = reload;
 
-    function reload () {
-        console.log($scope);
-        Logs.update($scope).then(function(res) {
-            $scope.logs = res.logs;
-            $scope.total = res.total;
-        });
-    }
-
-
+    Logs.getService().then(function(service) {
+        $scope.showService = service;
+        reload();
+    });
 
 
     socket.on('log', function (log) {
@@ -51,9 +37,16 @@ controller('LoggerCtrl', function(
             $scope.total = res.total;
         });
 
-        jumpToBottom(logsTable);
+        jumpToBottom( document.querySelector('body') );
     });
 
+
+    function reload () {
+        Logs.update($scope).then(function(res) {
+            $scope.logs = res.logs;
+            $scope.total = res.total;
+        });
+    }
 
     function jumpToBottom (element) {
         element.scrollTop = element.scrollHeight;
