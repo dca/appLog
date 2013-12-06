@@ -58,7 +58,10 @@ Client.prototype.send = function (event, message) {
         stackStr: (new Error()).stack
     };
 
-    this.axonStream.send(event, msg);
+    var self = this;
+    process.nextTick(function() {
+        self.axonStream.send(event, msg);
+    });
 }
 
 
