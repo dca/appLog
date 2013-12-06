@@ -9,26 +9,13 @@ factory('Logs', function(
     var service = {};
 
     function Logs () {
-        this.logs = [];
 
+        this.logs   = [];
         this.filter = {};
         this.query  = {};
-
-        this.total = 0;
-
+        this.total  = 0;
         this.service = service;
-
-        this.getService();
     }
-
-    // Logs.prototype.setFilter = function(scope){
-    //     this.filter = {
-    //         'service' : scope.showService ,
-    //         'level'   : scope.showLevel
-    //     }
-
-    //     return true;
-    // }
 
     Logs.prototype.update = function(args){
         var defer = $q.defer();
@@ -68,13 +55,11 @@ factory('Logs', function(
 
             try{
                 _service = res.facets.service.terms;
-            }catch(e){
-                //
-            }
 
-            angular.forEach(_service, function(el){
-                service[el.term] = true;
-            });
+                angular.forEach(_service, function(el){
+                    service[el.term] = true;
+                });
+            }catch(e){}
 
             defer.resolve(service);
         });
