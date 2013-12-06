@@ -1,16 +1,23 @@
 ;(function($) {
 
+    var host    = 'http://127.0.0.1:9610';
+    var logApi  = '/message';
+    var Service = 'Unknown';
+
     var dlog = function dlog (options) {
-        this.host    = 'http://127.0.0.1:9610';
-        this.logApi  = '/message';
-        this.service = 'meepshop-facade';
+        return this;
     };
 
-    dlog.prototype.send = function send() {
+    function _log(level, args) {
+        Array.prototype.unshift.call(args, level);
+        send.apply(this, args);
+    };
 
-        var _url   = this.host + this.logApi;
+    function send() {
+
+        var _url   = host + logApi;
         var _msg   = {
-            service : this.service,
+            service : Service,
             message : arguments,
             stackStr: (new Error()).stack
         };
@@ -24,30 +31,33 @@
         });
     };
 
+    dlog.prototype.service = function (name) {
+        if (typeof name === 'string') {
+            Service = name;
+        }
+        return this;
+    };
+
     dlog.prototype.log = function () {
-        this._log('INFO', arguments);
+        _log('INFO', arguments);
     };
 
     dlog.prototype.info = function () {
-        this._log('INFO', arguments);
+        _log('INFO', arguments);
     };
 
     dlog.prototype.debug = function () {
-        this._log('DEBUG', arguments);
+        _log('DEBUG', arguments);
     };
 
     dlog.prototype.error = function () {
-        this._log('ERROR', arguments);
+        _log('ERROR', arguments);
     };
 
     dlog.prototype.warning = function () {
-        this._log('WARNING', arguments);
+        _log('WARNING', arguments);
     };
 
-    dlog.prototype._log = function (level, args) {
-        Array.prototype.unshift.call(args, level);
-        this.send.apply(this, args);
-    };
 
 
 
