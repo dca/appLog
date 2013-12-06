@@ -25,7 +25,6 @@
 
         $.ajax({
             url  : _url,
-            type : 'POST',
             dataType: 'jsonp',
             data : { msg : _msg },
             success: function () {}
