@@ -4,7 +4,7 @@ var app = express();
 var dLog = require('../');
 
 dLog = new dLog.Client({
-    service : 'meepshop-admin',
+    service : 'mps_admin',
     hosts: [
         'tcp://0.0.0.0:9602'
     ]
