@@ -8,6 +8,7 @@ controller('LoggerCtrl', function(
     socket,
     Logs
 ){
+    $scope.showService = Logs.getService($scope);
 
     var logsTable = document.querySelector('body');
     $scope.logs = [];
@@ -20,15 +21,7 @@ controller('LoggerCtrl', function(
     // $scope.timeEnd   = '2013-12-05T00:00:00';
 
 
-    $scope.showService = {
-        'admin'   : true,
-        'system'  : true,
-        'store'   : true,
-        'facade'  : true,
-        'front'   : true,
-        'express' : true,
-        'AdminFront' : true
-    };
+
     $scope.showLevel = {
         'error'   : true,
         'warning' : true,
@@ -64,6 +57,9 @@ controller('LoggerCtrl', function(
         return ;
     }
 
+    setTimeout(function(){
+        reload();
+    }, 100);
 
-    reload();
+
 });
