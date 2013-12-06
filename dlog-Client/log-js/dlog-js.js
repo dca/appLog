@@ -54,6 +54,4 @@
 
     window.dlog = new dlog();
 
-    dlog.log('DEBUG', 'HIHI');
-
 })(jQuery);
