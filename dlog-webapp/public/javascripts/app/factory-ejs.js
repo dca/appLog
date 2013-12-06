@@ -56,6 +56,11 @@ factory('ejs', function(
         return _obj.join(' or ');
     }
 
+    function groupby (str, limit) {
+        var ES  = new ESQuery;
+        return ES.facet( ejs.TermsFacet(str).field(str).size( limit||100 ) ).size(0).doSearch();
+    }
+
     // function eSearch(args) {
     //     this.args = args || {};
     //     this.ejs  = ejs.Request().indices(index).types(type);
@@ -89,6 +94,7 @@ factory('ejs', function(
     // }
 
     return {
-        query : query
+        query : query,
+        groupby : groupby
     };
 });

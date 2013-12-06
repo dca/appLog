@@ -6,23 +6,16 @@ factory('Logs', function(
     ejs,
     $q
 ){
-    function Logs () {
-        this.logs = [];
+    var service = {};
 
+    function Logs () {
+
+        this.logs   = [];
         this.filter = {};
         this.query  = {};
-
-        this.total = 0;
+        this.total  = 0;
+        this.service = service;
     }
-
-    // Logs.prototype.setFilter = function(scope){
-    //     this.filter = {
-    //         'service' : scope.showService ,
-    //         'level'   : scope.showLevel
-    //     }
-
-    //     return true;
-    // }
 
     Logs.prototype.update = function(args){
         var defer = $q.defer();
@@ -41,7 +34,7 @@ factory('Logs', function(
         ejs.query(_args).then(function(data) {
             var _logs;
 
-            _self.total = data.hits.total;
+            _self.total = data.hits.total || 0;
 
             _logs = data.hits.hits || [];
             _logs.forEach(function(log){
@@ -52,6 +45,25 @@ factory('Logs', function(
         });
         return defer.promise;
 
+    }
+
+    Logs.prototype.getService = function(){
+        var defer = $q.defer();
+
+        ejs.groupby('service').then(function(res) {
+            var _service = [];
+
+            try{
+                _service = res.facets.service.terms;
+
+                angular.forEach(_service, function(el){
+                    service[el.term] = true;
+                });
+            }catch(e){}
+
+            defer.resolve(service);
+        });
+        return defer.promise;
     }
 
     Logs.prototype.new = function(log){
