@@ -7,7 +7,7 @@ var Client = function Client(options) {
 
     options = options || {};
 
-    var levelDefault = 'INFO';
+    this.levelDefault = 'INFO';
 
     /**
      * Config
@@ -63,7 +63,7 @@ Client.prototype.send = function (event, message) {
 
 
 Client.prototype.log = function log(message) {
-    this.send(levelDefault, message );
+    this.send(this.levelDefault, message );
 }
 
 Client.prototype.info = function info(message) {
