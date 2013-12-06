@@ -7,11 +7,11 @@ var Client = function Client(options) {
 
     options = options || {};
 
+    var levelDefault = 'INFO';
+
     /**
      * Config
      */
-    // this.port = options.port;
-    // this.host = options.host || '0.0.0.0';
     this.serviceName = options.service || 'Unknown';
     this.hosts = options.hosts || [];
 
@@ -63,7 +63,7 @@ Client.prototype.send = function (event, message) {
 
 
 Client.prototype.log = function log(message) {
-    this.send('DEBUG', message );
+    this.send(levelDefault, message );
 }
 
 Client.prototype.info = function info(message) {
