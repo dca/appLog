@@ -66,6 +66,21 @@ Client.prototype.log = function log(message) {
     this.send('DEBUG', message );
 }
 
+Client.prototype.info = function info(message) {
+    this.send('INFO', message );
+}
+
+Client.prototype.debug = function debug(message) {
+    this.send('DEBUG', message );
+}
+
+Client.prototype.warning = function warning(message) {
+    this.send('WARNING', message );
+}
+
+Client.prototype.error = function error(message) {
+    this.send('ERROR', message );
+}
 
 
 /**
