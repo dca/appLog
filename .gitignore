@@ -12,3 +12,6 @@ logs
 results
 
 npm-debug.log
+node_modules/*
+dlog-webapp/public/components
+dlog-webapp/public/build

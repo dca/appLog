@@ -1,0 +1,55 @@
+@import "bootstrap/variables.less";
+@import "bootstrap/variables_custom.less";
+
+//
+// main-content
+//
+#main-content {
+    margin-top: 70px;
+}
+
+body{
+    // background-image:url('/images/bg/tileable_wood_texture.png');
+    // background-attachment: fixed;
+}
+
+
+
+//
+// Sidebar
+//
+
+@dlog-sidebar-background : #f7f5fa;
+@dlog-sidebar-focus : #e5e3e9;
+
+
+.dlog-sidebar.nav{
+    background-color: @dlog-sidebar-background ;
+}
+
+.dlog-sidebar.nav > li{
+    //
+}
+
+.dlog-sidebar.nav > li > a:focus{
+    background-color: @dlog-sidebar-focus;
+}
+
+//
+// logs-table log level color
+//
+
+#logs-table {
+    .ERROR{
+        background-color : @state-danger-bg;
+    }
+    .WARNING{
+        background-color : @state-warning-bg;
+    }
+    .INFO{
+        background-color : @state-info-bg;
+    }
+    .DEBUG{
+        background-color : @table-bg-active;
+    }
+}
