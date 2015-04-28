@@ -21,6 +21,6 @@
     "angular-socket-io": "~0.2.0",
     "moment": "~2.4.0",
     "bootstrap": "~3.0.2",
-    "angular-bootstrap3": "*"
+    "angular-bootstrap3": "git@github.com:praneybehl/bower-angular-bootstrap3.git"
   }
 }

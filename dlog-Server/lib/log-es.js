@@ -1,4 +1,4 @@
-var elasticsearch = require('elasticsearch');
+var elasticsearch = require('es');
 
 var config = {
     server : {
